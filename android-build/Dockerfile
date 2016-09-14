@@ -61,6 +61,7 @@ RUN mvn --version
 # --- Install NodeJS required for react native projects
 RUN curl -sL https://deb.nodesource.com/setup_6.x | bash -
 RUN apt-get -y install nodejs
+RUN npm install -g react-native-cli
 
 # --- Cleanup ---
 RUN apt-get clean
