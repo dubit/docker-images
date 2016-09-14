@@ -6,6 +6,7 @@ ENV ANDROID_HOME /opt/android-sdk-linux
 # --- Run system tool updates ---
 RUN apt-get update
 RUN apt-get -y install curl
+RUN apt-get -y install git
 
 # --- Install Android build requirements ---
 RUN dpkg --add-architecture i386
@@ -63,5 +64,8 @@ RUN apt-get -y install nodejs
 
 # --- Cleanup ---
 RUN apt-get clean
+
+VOLUME /usr/src/app
+WORKDIR /usr/src/app
 
 CMD ls
