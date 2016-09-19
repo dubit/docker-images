@@ -5,8 +5,11 @@ ENV ANDROID_HOME /opt/android-sdk-linux
 
 # --- Run system tool updates ---
 RUN apt-get update
+RUN apt-get -y install unzip
 RUN apt-get -y install curl
 RUN apt-get -y install git
+RUN apt-get -y install python
+RUN apt-get -y install build-essential
 
 # --- Install Android build requirements ---
 RUN dpkg --add-architecture i386
@@ -18,8 +21,17 @@ RUN cd /opt && curl -s https://dl.google.com/android/android-sdk_r24.4.1-linux.t
 RUN cd /opt && tar -xvzf android-sdk.tgz
 RUN cd /opt && rm -rf android-sdk.tgz
 
+# -- Download the Android NDK and export to $ANDROID_NDK ---
+ENV ANDROID_NDK /opt/android-ndk
+
+RUN mkdir /opt/android-ndk-tmp
+RUN cd /opt/android-ndk-tmp && curl -s https://dl.google.com/android/repository/android-ndk-r10e-linux-x86_64.zip > android-ndk.zip
+RUN cd /opt/android-ndk-tmp && unzip android-ndk.zip
+RUN cd /opt/android-ndk-tmp && mv ./android-ndk-r10e /opt/android-ndk
+RUN rm -rf /opt/android-ndk-tmp
+
 # --- Update the PATH variable ---
-ENV PATH ${PATH}:${ANDROID_HOME}/tools:${ANDROID_HOME}/platform-tools
+ENV PATH ${PATH}:${ANDROID_HOME}/tools:${ANDROID_HOME}/platform-tools:${ANDROID_NDK}
 
 # --- Install the required build packages, tools and SDKs ---
 # * To get a list of available packages run: android list sdk --no-ui --all --extended
