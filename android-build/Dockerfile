@@ -40,7 +40,6 @@ ENV PATH ${PATH}:${ANDROID_HOME}/tools:${ANDROID_HOME}/platform-tools:${ANDROID_
 
 # --- Update the android SDK repositories ---
 RUN echo y | android update sdk --no-ui --all --filter platform-tools | grep 'package installed'
-RUN echo y | android update sdk --no-ui --all --filter extra-android-support | grep 'package installed'
 
 # --- Install android SDK
 # * If you are installing multiple SDK packages keep these in descending order!
