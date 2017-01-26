@@ -72,7 +72,18 @@ RUN mvn --version
 # --- Install NodeJS required for react native projects
 RUN curl -sL https://deb.nodesource.com/setup_6.x | bash -
 RUN apt-get -y install nodejs
+
+# --- Install Yarn as an alternative to NPM for package management ---
+RUN curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add -
+RUN echo "deb https://dl.yarnpkg.com/debian/ stable main" | tee /etc/apt/sources.list.d/yarn.list
+RUN apt-get update && apt-get install yarn
+RUN yarn --version
+
+# --- Install React-Native's CLI ---
 RUN npm install -g react-native-cli
+
+# --- Install Microsoft's CodePush service ---
+RUN npm install -g code-push-cli
 
 # --- Cleanup ---
 RUN apt-get clean
