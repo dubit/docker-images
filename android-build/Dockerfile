@@ -40,7 +40,6 @@ ENV PATH ${PATH}:${ANDROID_HOME}/tools:${ANDROID_HOME}/platform-tools:${ANDROID_
 
 # --- Update the android SDK repositories ---
 RUN echo y | android update sdk --no-ui --all --filter platform-tools | grep 'package installed'
-RUN echo y | android update sdk --no-ui --all --filter extra-android-support | grep 'package installed'
 
 # --- Install android SDK
 # * If you are installing multiple SDK packages keep these in descending order!
@@ -61,6 +60,7 @@ RUN echo y | android update sdk --no-ui --all --filter addon-google_apis-google-
 
 # --- Install Gradle ---
 RUN apt-get -y install gradle
+RUN mkdir ~/.gradle && touch ~/.gradle/gradle.properties
 RUN gradle -v
 
 # --- Install Maven 3 ---
@@ -73,7 +73,18 @@ RUN mvn --version
 # --- Install NodeJS required for react native projects
 RUN curl -sL https://deb.nodesource.com/setup_6.x | bash -
 RUN apt-get -y install nodejs
+
+# --- Install Yarn as an alternative to NPM for package management ---
+RUN curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add -
+RUN echo "deb https://dl.yarnpkg.com/debian/ stable main" | tee /etc/apt/sources.list.d/yarn.list
+RUN apt-get update && apt-get install yarn
+RUN yarn --version
+
+# --- Install React-Native's CLI ---
 RUN npm install -g react-native-cli
+
+# --- Install Microsoft's CodePush service ---
+RUN npm install -g code-push-cli
 
 # --- Cleanup ---
 RUN apt-get clean
