@@ -60,6 +60,7 @@ RUN echo y | android update sdk --no-ui --all --filter addon-google_apis-google-
 
 # --- Install Gradle ---
 RUN apt-get -y install gradle
+RUN mkdir ~/.gradle && touch ~/.gradle/gradle.properties
 RUN gradle -v
 
 # --- Install Maven 3 ---
