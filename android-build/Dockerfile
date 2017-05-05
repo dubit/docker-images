@@ -43,6 +43,8 @@ RUN echo y | android update sdk --no-ui --all --filter platform-tools | grep 'pa
 
 # --- Install android SDK
 # * If you are installing multiple SDK packages keep these in descending order!
+RUN echo y | android update sdk --no-ui --all --filter android-25 | grep 'package installed'
+RUN echo y | android update sdk --no-ui --all --filter android-24 | grep 'package installed'
 RUN echo y | android update sdk --no-ui --all --filter android-23 | grep 'package installed'
 
 # --- Install build-tools
