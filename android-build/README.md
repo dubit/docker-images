@@ -6,10 +6,23 @@ This image contains an environment that allows building Android applications wit
 ## Tools, compilers and utilities inside:
 * Base OS: Ubuntu:16.04
 * Version control: Git
-* System tools: curl, unzip, build-essential
-* Build tools: maven, gradle, react-native CLI
-* Compilers and programming languages: GCC, G++, python, openJDK-8, Node.js 6.x
-* SDKs: Android SDK core components and Android NDK
+* System tools:
+  * curl
+  * unzip
+  * build-essential
+* Build tools:
+  * maven 3
+  * gradle
+  * react-native CLI
+* Compilers and programming languages:
+  * GCC (included by build-essential)
+  * python 2.7
+  * openJDK-8
+  * Node.js 6.x
+* SDKs:
+  * Android SDK 23
+  * Android NDK r10e
+  * Android build-tools 23.0.1
 
 ## How to use the image
 
