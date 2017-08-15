@@ -65,7 +65,6 @@ RUN sdkmanager "add-ons;addon-google_apis-google-23"
 
 # --- Install Gradle ---
 RUN apt-get -y install gradle
-RUN mkdir ~/.gradle && touch ~/.gradle/gradle.properties
 RUN gradle -v
 
 # --- Install Maven 3 ---
@@ -93,6 +92,10 @@ RUN npm install -g code-push-cli
 
 # --- Cleanup ---
 RUN apt-get clean
+
+RUN useradd -ms /bin/bash builder
+USER builder
+RUN mkdir ~/.gradle && touch ~/.gradle/gradle.properties
 
 VOLUME /usr/src/app
 WORKDIR /usr/src/app
