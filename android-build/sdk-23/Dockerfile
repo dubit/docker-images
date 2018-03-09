@@ -24,7 +24,7 @@ RUN touch /root/.android/repositories.cfg
 # --- Download the Android SDK tools and export to $ANDROID_HOME ---
 ENV ANDROID_HOME /opt/android-sdk-linux
 RUN cd /opt \
-    && curl https://dl.google.com/android/repository/sdk-tools-linux-3952940.zip -o android-sdk-tools.zip \
+    && curl https://dl.google.com/android/repository/sdk-tools-linux-4333796.zip -o android-sdk-tools.zip \
     && unzip -q android-sdk-tools.zip -d ${ANDROID_HOME} \
     && rm -f android-sdk-tools.zip
 
@@ -70,7 +70,7 @@ RUN apt-get -y install maven
 RUN mvn --version
 
 # --- Install NodeJS required for react native projects
-RUN curl -sL https://deb.nodesource.com/setup_8.x | bash -
+RUN curl -sL https://deb.nodesource.com/setup_9.x | bash -
 RUN apt-get -y install nodejs
 
 # --- Install Yarn as an alternative to NPM for package management ---
