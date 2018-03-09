@@ -69,6 +69,14 @@ RUN apt-get update
 RUN apt-get -y install maven
 RUN mvn --version
 
+# --- Install Ruby required for Fastlane operations ---
+RUN apt-get -y install ruby-full
+RUN ruby -v
+
+# --- Install Bundler as the primary package manager for Ruby ---
+RUN gem install bundler
+RUN bundler version
+
 # --- Install NodeJS required for react native projects
 RUN curl -sL https://deb.nodesource.com/setup_9.x | bash -
 RUN apt-get -y install nodejs
