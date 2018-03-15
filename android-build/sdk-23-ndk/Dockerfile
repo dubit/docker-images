@@ -1,5 +1,8 @@
 FROM dubit/android-build-image:sdk-23
 
+# --- Switch to the root user to install the NDK and it's components
+USER root
+
 ENV ANDROID_NDK_HOME /opt/android-ndk
 ENV ANDROID_NDK_VERSION r10e
 
@@ -12,6 +15,8 @@ RUN rm -rf /opt/android-ndk-tmp
 
 # --- Update the PATH variable ---
 ENV PATH ${PATH}:${ANDROID_NDK_HOME}
+
+USER builder
 
 VOLUME /usr/src/app
 WORKDIR /usr/src/app
