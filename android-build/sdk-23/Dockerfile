@@ -1,4 +1,4 @@
-FROM ubuntu:16.04
+FROM dubit/android-build-image:base
 
 # --- Install the required build packages, tools and SDKs ---
 # * To get a list of available packages run: sdkmanager --list
