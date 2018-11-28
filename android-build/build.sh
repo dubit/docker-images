@@ -4,8 +4,8 @@ CURRENT_DIR=$(pwd)
 DIRECTORY_SEPARATOR="/"
 
 base_images=(base)
-sdk_only_images=(sdk-23 sdk-25 sdk-27)
-ndk_images=(sdk-23-ndk sdk-25-ndk sdk-27-ndk)
+sdk_only_images=(sdk-23 sdk-25 sdk-27 sdk-28)
+ndk_images=(sdk-23-ndk sdk-25-ndk sdk-27-ndk sdk-28-ndk)
 
 # Build the base image first.
 for i in "${base_images[@]}"

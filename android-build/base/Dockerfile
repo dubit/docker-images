@@ -28,7 +28,7 @@ RUN ruby -v
 RUN gem install bundler
 
 # --- Install NodeJS required for react native projects
-RUN curl -sL https://deb.nodesource.com/setup_10.x | bash -
+RUN curl -sL https://deb.nodesource.com/setup_11.x | bash -
 RUN apt-get -y install nodejs
 
 # --- Install Yarn as an alternative to NPM for package management ---
