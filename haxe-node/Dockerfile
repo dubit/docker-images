@@ -1,4 +1,4 @@
-FROM NODE:10.15.0
+FROM node:10.15.0
 
 # Install Haxe dependencies
 RUN apt-get update &&  apt-get install -y g++ g++-multilib libgc-dev
