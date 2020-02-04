@@ -47,6 +47,9 @@ RUN useradd -ms /bin/bash builder
 USER builder
 RUN mkdir ~/.gradle && touch ~/.gradle/gradle.properties
 
+# Set GEM_HOME so that all aspects of gem installations are local to the user we just created to avoid permission issues
+ENV GEM_HOME=~/.gem
+
 VOLUME /usr/src/app
 WORKDIR /usr/src/app
 
