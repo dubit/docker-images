@@ -19,10 +19,10 @@ All build images extend the `:base` build image. It contains all common utilitie
   * GCC (included by build-essential)
   * python 2.7
   * openJDK-8
-  * Node.js 11.x
-  * Ruby 2.3
+  * Node.js 12.x
+  * Ruby 2.5.1
 * SDKs:
-  * Android SDK 23/25/27/28
+  * Android SDK 29/30
   * Android NDK r10e
   * Android build-tools - _all versions of build tools corresponding to the SDK version are included_
 
