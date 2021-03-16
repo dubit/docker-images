@@ -1,4 +1,4 @@
-FROM ubuntu:16.04
+FROM ubuntu:18.04
 
 # --- Environment variables ---
 ENV ANDROID_HOME /opt/android-sdk-linux
@@ -26,9 +26,11 @@ RUN ruby -v
 
 # --- Install Bundler as the primary package manager for Ruby ---
 RUN gem install bundler
+# --- Install Rubygems 3.1.4 for compatibility with Bundler 2 ---
+RUN gem update --system 3.1.4
 
 # --- Install NodeJS required for react native projects
-RUN curl -sL https://deb.nodesource.com/setup_11.x | bash -
+RUN curl -sL https://deb.nodesource.com/setup_12.x | bash -
 RUN apt-get -y install nodejs
 
 # --- Install Yarn as an alternative to NPM for package management ---
